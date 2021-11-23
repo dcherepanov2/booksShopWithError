@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<footer class="Footer" th:fragment="footer">
+    <div class="wrap">
+        <div class="row Footer-main">
+            <div class="row-block"
+                 th:replace="~{fragments/footer_left_side_info_block_fragment :: block}"></div>
+            <div class="row-block">
+                <ul class="menu menu_vt Footer-menu">
+                    <li class="menu-item"><a class="menu-link" th:href="@{/}" href="/index.html">Главная</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/genres/}" href="/genres/index.html">Жанры</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/books/recent}" href="/books/recent.html">Новинки</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/books/popular}" href="/books/popular.html">Популярное</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/authors}">Авторы</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row-block">
+                <ul class="menu menu_vt Footer-menu">
+                    <li class="menu-item"><a class="menu-link" th:href="@{/user/signin}" href="/signin.html">Войти</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/documents/}" href="/documents/index.html">Документы</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/about/}">О компании</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/faq/}" href="/faq.html">Помощь</a>
+                    </li>
+                    <li class="menu-item"><a class="menu-link" th:href="@{/contacts/}">Контакты</a>
+                    </li>
+                    <p>
+                        <span>Выбор языка</span>
+                        <select id="locales" onclick="getLocale()">
+                            <option value=" "></option>
+                            <option value="en">English</option>
+                            <option value="ru" onclick="getLocaleRussian()">Русский</option>
+                        </select>
+                    </p>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="Footer-copy">
+        <div class="wrap">© 2021 Bookshop Pty Ltd. ALL RIGHTS RESERVED
+        </div>
+    </div>
+    <script src="/assets/plg/jQuery/jquery-3.5.1.min.js"></script>
+    <script>
+        function getLocale() {
+            var urlState = window.location
+            if (document.getElementById("locales").value !== ' ') {
+              console.log("Я не равен нулю!")
+              //для английской раскладки сайта
+                if (document.getElementById("locales").value === 'en') {
+                  console.log("Работаю")
+                    if (urlState.indexOf("?lang=ru") !== -1) {
+                      console.log("Работаю")
+                      urlState.replace("?lang=ru","?lang=en")
+                      window.location.href = urlState;
+                    }
+                    else {
+                      console.log("Работаю")
+                      window.location.href = urlState + "?lang=en";
+                    }
+                }
+
+              //для русской раскладки сайта
+              if (document.getElementById("locales").value === 'ru') {
+                console.log("Я не равен нулю!")
+                if (urlState.indexOf("?lang=en") !== -1) {
+                  urlState.replace("?lang=en","?lang=ru")
+                  window.location.href = urlState;
+                }
+                else {
+                  window.location.href = urlState + "?lang=en";
+                }
+              }
+            }
+        }
+    </script>
+</footer>
+</html>
