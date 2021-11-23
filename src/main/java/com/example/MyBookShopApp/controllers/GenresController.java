@@ -1,6 +1,5 @@
 package com.example.MyBookShopApp.controllers;
 
-import com.example.MyBookShopApp.data.Book;
 import com.example.MyBookShopApp.data.Genre;
 import com.example.MyBookShopApp.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;

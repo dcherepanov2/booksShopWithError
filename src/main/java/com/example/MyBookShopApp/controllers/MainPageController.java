@@ -16,7 +16,6 @@ import java.util.List;
 @Controller
 public class MainPageController {
 
-    //private Logger logger =Logger.getLogger(MainPageController.class.getName());
     private final BookService bookService;
 
     @Autowired

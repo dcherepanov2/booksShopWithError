@@ -11,7 +11,7 @@
                 <div class="pict pict_left"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/>
                 </div>
                 <div>
-                    <h2>Биография
+                    <h2 th:text="#{books.book}">
                     </h2>
                     <p th:text="${authorSlug.biographyPreview}">
                     </p>
@@ -22,8 +22,8 @@
                 </p>
             </div>
             <div class="Spoiler-footer">
-                <button class="Spoiler-trigger btn btn_primary btn_nr" type="button" data-showtext="Свернуть"
-                        data-hidetext="Показать полностью">
+                <button class="Spoiler-trigger btn btn_primary btn_nr" type="button" data-showtext=Свернуть
+                        th:attr="data-hidetext=#{show.all}">
                 </button>
             </div>
         </div>

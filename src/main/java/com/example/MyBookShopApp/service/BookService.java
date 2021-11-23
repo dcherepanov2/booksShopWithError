@@ -9,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,21 +23,13 @@ public class BookService {
         this.books = books;
     }
 
-    public List<Book> getRecommendedBooksData() {
-        return books.findByRecommendedIsTrue();
-    }
-
     public List<Book> getPopularBooksData() {
         return books.findByMostPopular();
     }
 
-    public List<Book> getSearchQuery(String name, int limit) {
+    public List<Book> getSearchQuery(String name) {
         List<Book> booksSearch;
-        try {
-            booksSearch = books.findByTitleContaining(name).subList(0,limit);
-        } catch (IndexOutOfBoundsException e){
-            booksSearch = books.findAll();
-        }
+        booksSearch = books.findByTitleContaining(name);
         return booksSearch;
     }
 
