@@ -9,24 +9,25 @@ public class MessageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    @Column(columnDefinition = "TIMESTAMP NOT NULL")
+    @Column(name = "time" ,columnDefinition = "TIMESTAMP NOT NULL")
     private LocalDateTime time;
 
     @Column(name = "user_id",columnDefinition = "INT")
     private int userId;
 
-    @Column(columnDefinition = "VARCHAR(255)")
+    @Column(name = "email", columnDefinition = "VARCHAR(255)")
     private String email;
 
-    @Column(columnDefinition = "VARCHAR(255)")
+    @Column(name = "name" ,columnDefinition = "VARCHAR(255)")
     private String name;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(name = "subject" ,columnDefinition = "VARCHAR(255) NOT NULL")
     private String subject;
 
-    @Column(columnDefinition = "TEXT NOT NULL")
+    @Column(name = "text", columnDefinition = "TEXT NOT NULL")
     private String text;
 
     public int getId() {

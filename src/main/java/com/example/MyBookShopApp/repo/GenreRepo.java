@@ -12,7 +12,7 @@ import java.util.List;
 public interface GenreRepo extends JpaRepository<GenreEntity,Integer>{
 
     @Query(
-            value = "SELECT * FROM book_genres WHERE genre_id =:id",
+            value = "SELECT * FROM book2genre WHERE genre_id =:id",
             nativeQuery = true
     )
    List<Integer> findByIdAllBooks(@Param("id")Integer id);

@@ -8,12 +8,13 @@ public class BookFileTypeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(name = "name",columnDefinition = "VARCHAR(255) NOT NULL")
     private String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     public int getId() {

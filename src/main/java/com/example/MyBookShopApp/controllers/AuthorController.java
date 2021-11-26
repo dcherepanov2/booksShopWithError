@@ -11,16 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/authors")
 public class AuthorController {
 
     private final AuthorService authorService;
-    private final Logger logger = Logger.getLogger(AuthorController.class.getName());
 
     @Autowired
     public AuthorController(AuthorService authorService) {
@@ -30,11 +26,8 @@ public class AuthorController {
 
     @GetMapping
     public String getAuthorsPage(Model model){
-        List<Author> authors = authorService.getSortAuthor();
-        Map<Character, List<Author>> map1 = authors.stream()
-                .collect(Collectors.groupingBy(Author::firstLetter));// группировка авторов из бд по алфавиту
-        logger.log(Level.INFO,map1.toString());
-        model.addAttribute("mapAuthors",map1);
+        Map<Character, List<Author>> mapAuthorToFirstLetter = authorService.getSortAuthor();
+        model.addAttribute("mapAuthors", mapAuthorToFirstLetter);
         return "/authors/index";
     }
 
@@ -44,5 +37,4 @@ public class AuthorController {
         model.addAttribute("authorSlug",author);
         return "/authors/slug";
     }
-
 }

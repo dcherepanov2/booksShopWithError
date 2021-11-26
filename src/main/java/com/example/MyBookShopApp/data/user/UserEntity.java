@@ -32,32 +32,52 @@ public class UserEntity {
     private String name;
 
     @OneToMany
-    @JoinTable(name = "user_contact", joinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "user_contact",
+            joinColumns = @JoinColumn(name = "user_id")
+            ,inverseJoinColumns = @JoinColumn(name  = "code_trials"))
+    private List<UserContactEntity> books = new ArrayList<>();
+
+    @OneToMany
+    @JoinTable(name = "user_contact",
+            joinColumns = @JoinColumn(name = "user_id")
+            ,inverseJoinColumns = @JoinColumn(name  = "code_trials"))
     private List<UserContactEntity> contact = new ArrayList<>();
 
     @OneToMany
-    @JoinTable(name = "book_review_like", joinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "book_review_like",
+            joinColumns = @JoinColumn(name = "user_id")
+            ,inverseJoinColumns = @JoinColumn(name = "review_id")
+    )
     private List<BookReviewEntity> bookReviewLikes = new ArrayList<>();
 
     @OneToMany
-    @JoinTable(name = "message", joinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "message",
+            joinColumns = @JoinColumn(name = "user_id")
+            ,inverseJoinColumns = @JoinColumn(name = "id"))
     private List<MessageEntity> messages = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "book_review", joinColumns = @JoinColumn(name = "user_id"))
+    @OneToMany
+    @JoinTable(
+            name = "book_review",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
     private List<Book> booksReview = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "balance_transaction", joinColumns = @JoinColumn(name = "user_id"))
+    @OneToMany
+    @JoinTable(
+            name = "balance_transaction",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<BalanceTransactionEntity> transactions = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "file_download", joinColumns = @JoinColumn(name = "user_id"))
+    @OneToMany
+    @JoinTable(
+            name = "file_download",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
     private List<Book> fileDownloads = new ArrayList<>();
-
-    @ManyToMany
-    @JoinTable(name = "book2author", joinColumns = @JoinColumn(name = "user_id"))
-    private List<Book> authorJoinBook = new ArrayList<>();
 
     public List<BookReviewEntity> getBookReviewLikes() {
         return bookReviewLikes;
@@ -97,14 +117,6 @@ public class UserEntity {
 
     public void setFileDownloads(List<Book> fileDownloads) {
         this.fileDownloads = fileDownloads;
-    }
-
-    public List<Book> getAuthorJoinBook() {
-        return authorJoinBook;
-    }
-
-    public void setAuthorJoinBook(List<Book> authorJoinBook) {
-        this.authorJoinBook = authorJoinBook;
     }
 
     public int getId() {
@@ -150,4 +162,5 @@ public class UserEntity {
     public void setContact(List<UserContactEntity> contact) {
         this.contact = contact;
     }
+
 }

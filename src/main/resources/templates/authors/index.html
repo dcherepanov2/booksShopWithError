@@ -35,7 +35,7 @@
                         <h2 style="padding-top: 10px" class="Authors-title" id="a" th:text="${author.key}"></h2>
                         <!--              -->
                         <div class="Authors-letter" th:each="authors: ${author.value}">
-                            <div class="Authors-item"><a th:href="@{'/authors/'+${authors.id}}" th:text=" ${authors.last_name} + ' ' + ${authors.first_name}"
+                            <div class="Authors-item"><a th:href="@{'/authors/'+${authors.id}}" th:text=" ${authors.name}"
                                                          href="/authors/slug.html"></a>
                             </div>
                         </div>

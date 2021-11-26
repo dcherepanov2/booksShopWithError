@@ -32,7 +32,10 @@ public class Author {
     private String description;
 
     @ManyToMany
-    @JoinTable(name = "book2author", joinColumns = @JoinColumn(name = "author_id"))
+    @JoinTable(
+            name = "book2author",
+            joinColumns = @JoinColumn(name = "authors_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> books;
 
     public Integer getId() {

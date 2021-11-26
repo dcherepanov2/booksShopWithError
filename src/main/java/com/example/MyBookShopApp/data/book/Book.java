@@ -53,27 +53,47 @@ public class Book {
     private Date datePublic;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "book2genre", joinColumns = @JoinColumn(name = "genre_id"))
+    @JoinTable(
+            name = "book2genre"
+            ,joinColumns = @JoinColumn(name = "book_id")
+            ,inverseJoinColumns =  @JoinColumn(name = "genre_id")
+    )
     private List<GenreEntity> genres;
 
     @ManyToMany
     @JoinTable(name = "book2author", joinColumns = @JoinColumn(name = "book_id"))
     private List<Author> authors = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "file_download",joinColumns = @JoinColumn(name = "book_id"))
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "file_download"
+            ,joinColumns = @JoinColumn(name = "book_id")
+            ,inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<FileDownloadEntity> fileDownloadEntities= new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "book2user",joinColumns = @JoinColumn(name = "book_id"))
+    @OneToMany
+    @JoinTable(
+            name = "book2user",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<UserEntity> bookJoinUsers = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "book2author",joinColumns = @JoinColumn(name = "author_id"))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "book2author",
+            joinColumns = @JoinColumn(name = "authors_id")
+            ,inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
     private List<Author> booksToAuthors = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "book_review",joinColumns = @JoinColumn(name = "book_id"))
+    @OneToMany
+    @JoinTable(
+            name = "book_review",
+            joinColumns = @JoinColumn(name = "book_id")
+            ,inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<BookReviewEntity> booksReview = new ArrayList<>();
 
     public Book() {
@@ -195,4 +215,12 @@ public class Book {
     public void setBooksReview(List<BookReviewEntity> booksReview) {
         this.booksReview = booksReview;
     }
+
+//    public List<BookReviewEntity> getBooksReview() {
+//        return booksReview;
+//    }
+//
+//    public void setBooksReview(List<BookReviewEntity> booksReview) {
+//        this.booksReview = booksReview;
+//    }
 }

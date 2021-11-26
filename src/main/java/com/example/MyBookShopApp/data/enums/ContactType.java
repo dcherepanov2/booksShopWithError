@@ -1,21 +1,19 @@
 package com.example.MyBookShopApp.data.enums;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public enum ContactType {
-    PHONE(1),
-    EMAIL(2);
+    PHONE(Short.parseShort(String.valueOf(1))),
+    EMAIL(Short.parseShort(String.valueOf(2)));
 
-    private final int code;
+    private short code;
 
-    public int getCode() {
+    public short getCode() {
         return code;
     }
 
-    public Set<ContactType> getByCode(int code){
+    public Set<ContactType> getByCode(short code){//буду использовать в дальнейшем при присвовении type связи
         ContactType[] contactTypes = ContactType.values();
         Set<ContactType> contactTypeList = new HashSet<>();
         for(ContactType contactType:contactTypes){
@@ -26,7 +24,8 @@ public enum ContactType {
         return contactTypeList;
     }
 
-    ContactType(int code) {
+    ContactType(short code) {
         this.code = code;
     }
+
 }

@@ -12,7 +12,7 @@
             <column name="book_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="author_id" type="INT">
+            <column name="authors_id" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="sort_index" type="INT">

@@ -25,7 +25,11 @@ public class GenreEntity {
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "book2genre",joinColumns = @JoinColumn(name = "genre_id"))
+    @JoinTable(
+            name = "book2genre",
+            joinColumns = @JoinColumn(name = "genre_id")
+            ,inverseJoinColumns =  @JoinColumn(name = "book_id")
+    )
     private List<Book> books = new ArrayList<>();
 
     public int getId() {

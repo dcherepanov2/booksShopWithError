@@ -9,16 +9,12 @@
             <column name="id" type="INT" autoIncrement="true">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="hash" type="VARCHAR(255)">
-                <constraints nullable="false" unique="true"/>
-            </column>
-            <column name="reg_time" type="DATETIME">
+            <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="balance" type="INT">
+            <column name="description" type="TEXT">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -11,7 +11,7 @@ public class BookReviewLikeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "INT NOT NULL")
+    @Column(name = "review_id",columnDefinition = "INT NOT NULL")
     private int reviewId;
 
     @Column(name = "user_id", columnDefinition = "INT NOT NULL")

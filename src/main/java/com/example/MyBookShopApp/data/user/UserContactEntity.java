@@ -22,6 +22,7 @@ public class UserContactEntity {
     @JoinColumn(name = "user_id",referencedColumnName = "id", columnDefinition = "INT NOT NULL")
     private UserEntity userId;
 
+    @Column(columnDefinition = "TINYINT NOT NULL")
     private ContactType type;
 
     @Column(columnDefinition = "SMALLINT NOT NULL")
@@ -30,7 +31,7 @@ public class UserContactEntity {
     @Column(columnDefinition = "VARCHAR(255) NOT NULL")
     private String code;
 
-    @Column(columnDefinition = "INT")
+    @Column(name = "code_trials",columnDefinition = "INT")
     private int codeTrails;
 
     @Column(columnDefinition = "TIMESTAMP")

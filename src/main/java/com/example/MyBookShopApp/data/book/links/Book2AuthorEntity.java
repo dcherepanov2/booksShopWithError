@@ -13,7 +13,7 @@ public class Book2AuthorEntity {
     @Column(name = "book_id", columnDefinition = "INT NOT NULL")
     private int bookId;
 
-    @Column(name = "author_id", columnDefinition = "INT NOT NULL")
+    @Column(name = "authors_id", columnDefinition = "INT NOT NULL")
     private int authorId;
 
     @Column(name = "sort_index",columnDefinition = "INT NOT NULL  DEFAULT 0")
